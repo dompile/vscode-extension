@@ -1,0 +1,135 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "DOMpile HTML",
+  "scopeName": "text.html.dompile",
+  "patterns": [
+    {
+      "include": "#dompile-includes"
+    },
+    {
+      "include": "#dompile-templates"
+    },
+    {
+      "include": "#dompile-slots"
+    },
+    {
+      "include": "text.html.basic"
+    }
+  ],
+  "repository": {
+    "dompile-includes": {
+      "patterns": [
+        {
+          "name": "meta.tag.include.dompile",
+          "begin": "<!--#include\\s+",
+          "end": "-->",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.tag.begin.html"
+            }
+          },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.tag.end.html"
+            }
+          },
+          "patterns": [
+            {
+              "name": "entity.other.attribute-name.dompile",
+              "match": "\\b(virtual|file)\\b"
+            },
+            {
+              "name": "string.quoted.double.html",
+              "begin": "\"",
+              "end": "\"",
+              "patterns": [
+                {
+                  "name": "constant.character.escape.html",
+                  "match": "\\\\."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "dompile-templates": {
+      "patterns": [
+        {
+          "name": "meta.tag.template.dompile",
+          "begin": "<(template)\\b",
+          "end": ">",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.tag.begin.html"
+            },
+            "1": {
+              "name": "entity.name.tag.html"
+            }
+          },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.tag.end.html"
+            }
+          },
+          "patterns": [
+            {
+              "name": "entity.other.attribute-name.dompile",
+              "match": "\\b(extends|name)\\b"
+            },
+            {
+              "name": "string.quoted.double.html",
+              "begin": "\"",
+              "end": "\"",
+              "patterns": [
+                {
+                  "name": "constant.character.escape.html",
+                  "match": "\\\\."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "dompile-slots": {
+      "patterns": [
+        {
+          "name": "meta.tag.slot.dompile",
+          "begin": "<(slot)\\b",
+          "end": ">",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.tag.begin.html"
+            },
+            "1": {
+              "name": "entity.name.tag.html"
+            }
+          },
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.tag.end.html"
+            }
+          },
+          "patterns": [
+            {
+              "name": "entity.other.attribute-name.dompile",
+              "match": "\\b(name)\\b"
+            },
+            {
+              "name": "string.quoted.double.html",
+              "begin": "\"",
+              "end": "\"",
+              "patterns": [
+                {
+                  "name": "constant.character.escape.html",
+                  "match": "\\\\."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

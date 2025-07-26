@@ -1,0 +1,159 @@
+{
+  "name": "dompile-preview",
+  "displayName": "DOMpile Preview",
+  "description": "Live preview and development tools for DOMpile static sites",
+  "version": "0.1.0",
+  "publisher": "dompile",
+  "license": "CC0-1.0",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Previews",
+    "Other"
+  ],
+  "keywords": [
+    "dompile",
+    "static-site-generator",
+    "html",
+    "preview",
+    "live-reload"
+  ],
+  "activationEvents": [
+    "onLanguage:html",
+    "workspaceContains:**/*.html",
+    "workspaceContains:dompile.config.*"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "dompile.openPreview",
+        "title": "Open Preview",
+        "category": "DOMpile",
+        "icon": "$(preview)"
+      },
+      {
+        "command": "dompile.refreshPreview",
+        "title": "Refresh Preview",
+        "category": "DOMpile",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "dompile.previewToSide",
+        "title": "Open Preview to the Side",
+        "category": "DOMpile",
+        "icon": "$(open-preview)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "dompile.previewToSide",
+          "when": "resourceExtname == .html && dompile.isActive",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "dompile.openPreview",
+          "when": "resourceExtname == .html && dompile.isActive",
+          "group": "navigation"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "dompile.openPreview",
+          "when": "resourceExtname == .html && dompile.isActive",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "dompile.openPreview",
+        "key": "ctrl+shift+p",
+        "mac": "cmd+shift+p",
+        "when": "editorTextFocus && resourceExtname == .html"
+      }
+    ],
+    "configuration": {
+      "title": "DOMpile",
+      "properties": {
+        "dompile.preview.autoRefresh": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically refresh preview when files change"
+        },
+        "dompile.preview.debounceDelay": {
+          "type": "number",
+          "default": 200,
+          "description": "Delay in milliseconds before refreshing preview after changes"
+        },
+        "dompile.preview.openToSide": {
+          "type": "boolean",
+          "default": true,
+          "description": "Open preview in a new column"
+        },
+        "dompile.sourceDirectory": {
+          "type": "string",
+          "default": "src",
+          "description": "Source directory for DOMpile files"
+        },
+        "dompile.includesDirectory": {
+          "type": "string",
+          "default": "includes",
+          "description": "Directory name for include files"
+        }
+      }
+    },
+    "languages": [
+      {
+        "id": "dompile-html",
+        "aliases": ["DOMpile HTML", "dompile"],
+        "extensions": [".html"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "dompile-html",
+        "scopeName": "text.html.dompile",
+        "path": "./syntaxes/dompile-html.tmLanguage.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "eslint": "^8.54.0",
+    "typescript": "^5.3.2",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.8",
+    "@vscode/vsce": "^2.22.0"
+  },
+  "dependencies": {
+    "@dompile/cli": "file:../cli"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dompile/cli.git",
+    "directory": "vscode-extension"
+  },
+  "bugs": {
+    "url": "https://github.com/dompile/cli/issues"
+  },
+  "homepage": "https://github.com/dompile/cli#readme"
+}
