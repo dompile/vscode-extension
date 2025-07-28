@@ -100,7 +100,7 @@ my-project/
 </header>
 ```
 
-**src/layouts/default.html**:
+**src/.layouts/default.html**:
 ```html
 <!DOCTYPE html>
 <html>

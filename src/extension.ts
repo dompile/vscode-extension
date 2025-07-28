@@ -60,8 +60,8 @@ async function checkDompileWorkspace(): Promise<boolean> {
         '**/package.json',
         '**/dompile.config.*',
         '**/src/**/*.html',
-        '**/components/**/*.html',
-        '**/layouts/**/*.html'
+        '**/.components/**/*.html',
+        '**/.layouts/**/*.html'
     ];
 
     for (const pattern of patterns) {
