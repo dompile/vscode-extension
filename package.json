@@ -1,19 +1,18 @@
 {
-  "name": "dompile-preview",
-  "displayName": "DOMpile Preview",
-  "description": "Live preview and development tools for DOMpile static sites",
+  "name": "unify-preview",
+  "displayName": "Unify Preview",
+  "description": "Live preview and development tools for Unify static sites",
   "version": "0.1.0",
-  "publisher": "dompile",
+  "publisher": "unify",
   "license": "CC0-1.0",
   "engines": {
     "vscode": "^1.85.0"
   },
   "categories": [
-    "Previews",
     "Other"
   ],
   "keywords": [
-    "dompile",
+    "unify",
     "static-site-generator",
     "html",
     "preview",
@@ -22,85 +21,85 @@
   "activationEvents": [
     "onLanguage:html",
     "workspaceContains:**/*.html",
-    "workspaceContains:dompile.config.*"
+    "workspaceContains:unify.config.*"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "dompile.openPreview",
+        "command": "unify.openPreview",
         "title": "Open Preview",
-        "category": "DOMpile",
+        "category": "Unify",
         "icon": "$(preview)"
       },
       {
-        "command": "dompile.refreshPreview",
+        "command": "unify.refreshPreview",
         "title": "Refresh Preview",
-        "category": "DOMpile",
+        "category": "Unify",
         "icon": "$(refresh)"
       },
       {
-        "command": "dompile.previewToSide",
+        "command": "unify.previewToSide",
         "title": "Open Preview to the Side",
-        "category": "DOMpile",
+        "category": "Unify",
         "icon": "$(open-preview)"
       }
     ],
     "menus": {
       "editor/title": [
         {
-          "command": "dompile.previewToSide",
-          "when": "resourceExtname == .html && dompile.isActive",
+          "command": "unify.previewToSide",
+          "when": "resourceExtname == .html && unify.isActive",
           "group": "navigation"
         }
       ],
       "editor/context": [
         {
-          "command": "dompile.openPreview",
-          "when": "resourceExtname == .html && dompile.isActive",
+          "command": "unify.openPreview",
+          "when": "resourceExtname == .html && unify.isActive",
           "group": "navigation"
         }
       ],
       "explorer/context": [
         {
-          "command": "dompile.openPreview",
-          "when": "resourceExtname == .html && dompile.isActive",
+          "command": "unify.openPreview",
+          "when": "resourceExtname == .html && unify.isActive",
           "group": "navigation"
         }
       ]
     },
     "keybindings": [
       {
-        "command": "dompile.openPreview",
+        "command": "unify.openPreview",
         "key": "ctrl+shift+p",
         "mac": "cmd+shift+p",
         "when": "editorTextFocus && resourceExtname == .html"
       }
     ],
     "configuration": {
-      "title": "DOMpile",
+      "title": "Unify",
       "properties": {
-        "dompile.preview.autoRefresh": {
+        "unify.preview.autoRefresh": {
           "type": "boolean",
           "default": true,
           "description": "Automatically refresh preview when files change"
         },
-        "dompile.preview.debounceDelay": {
+        "unify.preview.debounceDelay": {
           "type": "number",
           "default": 200,
           "description": "Delay in milliseconds before refreshing preview after changes"
         },
-        "dompile.preview.openToSide": {
+        "unify.preview.openToSide": {
           "type": "boolean",
           "default": true,
           "description": "Open preview in a new column"
         },
-        "dompile.sourceDirectory": {
+        "unify.sourceDirectory": {
           "type": "string",
           "default": "src",
-          "description": "Source directory for DOMpile files"
+          "description": "Source directory for Unify files"
         },
-        "dompile.includesDirectory": {
+        "unify.includesDirectory": {
           "type": "string",
           "default": "includes",
           "description": "Directory name for include files"
@@ -109,17 +108,22 @@
     },
     "languages": [
       {
-        "id": "dompile-html",
-        "aliases": ["DOMpile HTML", "dompile"],
-        "extensions": [".html"],
+        "id": "unify-html",
+        "aliases": [
+          "Unify HTML",
+          "unify"
+        ],
+        "extensions": [
+          ".html"
+        ],
         "configuration": "./language-configuration.json"
       }
     ],
     "grammars": [
       {
-        "language": "dompile-html",
-        "scopeName": "text.html.dompile",
-        "path": "./syntaxes/dompile-html.tmLanguage.json"
+        "language": "unify-html",
+        "scopeName": "text.html.unify",
+        "path": "./syntaxes/unify-html.tmLanguage.json"
       }
     ]
   },
@@ -145,15 +149,15 @@
     "@vscode/vsce": "^2.22.0"
   },
   "dependencies": {
-    "@dompile/cli": "file:../cli"
+    "@fwdslsh/unify": "file:../cli"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dompile/cli.git",
+    "url": "https://github.com/fwdslsh/unify.git",
     "directory": "vscode-extension"
   },
   "bugs": {
-    "url": "https://github.com/dompile/cli/issues"
+    "url": "https://github.com/fwdslsh/unify/issues"
   },
-  "homepage": "https://github.com/dompile/cli#readme"
+  "homepage": "https://github.com/fwdslsh/unify#readme"
 }

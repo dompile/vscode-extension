@@ -1,26 +1,26 @@
 {
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-  "name": "DOMpile HTML",
-  "scopeName": "text.html.dompile",
+  "name": "Unify HTML",
+  "scopeName": "text.html.unify",
   "patterns": [
     {
-      "include": "#dompile-includes"
+      "include": "#unify-includes"
     },
     {
-      "include": "#dompile-templates"
+      "include": "#unify-templates"
     },
     {
-      "include": "#dompile-slots"
+      "include": "#unify-slots"
     },
     {
       "include": "text.html.basic"
     }
   ],
   "repository": {
-    "dompile-includes": {
+    "unify-includes": {
       "patterns": [
         {
-          "name": "meta.tag.include.dompile",
+          "name": "meta.tag.include.unify",
           "begin": "<!--#include\\s+",
           "end": "-->",
           "beginCaptures": {
@@ -35,7 +35,7 @@
           },
           "patterns": [
             {
-              "name": "entity.other.attribute-name.dompile",
+              "name": "entity.other.attribute-name.unify",
               "match": "\\b(virtual|file)\\b"
             },
             {
@@ -53,10 +53,10 @@
         }
       ]
     },
-    "dompile-templates": {
+    "unify-templates": {
       "patterns": [
         {
-          "name": "meta.tag.template.dompile",
+          "name": "meta.tag.template.unify",
           "begin": "<(template)\\b",
           "end": ">",
           "beginCaptures": {
@@ -74,7 +74,7 @@
           },
           "patterns": [
             {
-              "name": "entity.other.attribute-name.dompile",
+              "name": "entity.other.attribute-name.unify",
               "match": "\\b(extends|name)\\b"
             },
             {
@@ -92,10 +92,10 @@
         }
       ]
     },
-    "dompile-slots": {
+    "unify-slots": {
       "patterns": [
         {
-          "name": "meta.tag.slot.dompile",
+          "name": "meta.tag.slot.unify",
           "begin": "<(slot)\\b",
           "end": ">",
           "beginCaptures": {
@@ -113,7 +113,7 @@
           },
           "patterns": [
             {
-              "name": "entity.other.attribute-name.dompile",
+              "name": "entity.other.attribute-name.unify",
               "match": "\\b(name)\\b"
             },
             {
